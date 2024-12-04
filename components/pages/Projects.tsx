@@ -3,7 +3,7 @@
 
 type Props = LangProps
 
-const Projects:React.FC<Props> = ({ lang }) => {
+const Projects:React.FC<Props> = () => {
     
     
     return (
