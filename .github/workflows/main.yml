@@ -28,4 +28,4 @@ jobs:
           sudo git pull
           docker build -t my-portfolio .
           docker run -p 3033:3000 -d --name my-portfolio my-portfolio
-          docker image prune -a
+          docker image prune -a -f
