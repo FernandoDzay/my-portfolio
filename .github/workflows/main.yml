@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    # docker container rm my-portfolio
     steps:
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
@@ -27,5 +26,7 @@ jobs:
           cd /var/www/my-portfolio
           sudo git pull
           docker build -t my-portfolio .
+          docker container stop my-portfolio
+          docker container rm my-portfolio
           docker run -p 3033:3000 -d --name my-portfolio my-portfolio
           docker image prune -a -f
