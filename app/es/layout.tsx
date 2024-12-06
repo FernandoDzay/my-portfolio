@@ -6,7 +6,7 @@ export default function Layout({ children }: {children: React.ReactNode}) {
 
     return (
         <html lang="es">
-            <body>
+            <body className="relative z-0 bg-primary">
                 <Header lang="es" />
                 <main>
                     <LanguageProvider lang="es">

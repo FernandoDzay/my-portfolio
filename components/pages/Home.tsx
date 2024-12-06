@@ -1,3 +1,4 @@
+import HeroSection from "../heroSection"
 
 
 
@@ -6,9 +7,9 @@ type Props = LangProps
 const Home:React.FC<Props> = () => {
     
     
-    return (
-        <></>
-    )
+    return (<>
+        <HeroSection />
+    </>)
 }
 
 export default Home
