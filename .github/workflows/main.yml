@@ -25,8 +25,8 @@ jobs:
         script: |
           cd /var/www/my-portfolio
           sudo git pull
-          docker build -t my-portfolio .
-          docker container stop my-portfolio
-          docker container rm my-portfolio
-          docker run -p 3033:3000 -d --name my-portfolio my-portfolio
+          docker image pull fernandodzay/my-portfolio
+          docker container stop fernandodzay/my-portfolio
+          docker container rm fernandodzay/my-portfolio
+          docker run -p 3033:3000 -d --name my-portfolio fernandodzay/my-portfolio
           docker image prune -a -f
