@@ -1,0 +1,72 @@
+// import { PointMaterial, Points } from "@react-three/drei";
+// import { useFrame } from "@react-three/fiber";
+// import { random } from "maath";
+// import { useMemo, useRef, useState } from "react";
+// import * as THREE from "three";
+
+
+// type Props = {}
+
+// const Stars:React.FC<Props> = () => {
+//     const starsCount = 5000;
+//     const points = useRef<{rotation: {x: number, y: number}}>(null!);
+    
+  
+//     useFrame((state, delta) => {
+//         points.current.rotation.x += delta / 10
+//         points.current.rotation.y += delta / 15
+//     })
+  
+//     const particlesPosition = useMemo(() => {
+//         const positions = new Float32Array(starsCount * 3);
+
+//         // if (shape === "box") {
+//             for (let i = 0; i < starsCount; i++) {
+//                 let x = (Math.random() - 0.5) * 2;
+//                 let y = (Math.random() - 0.5) * 2;
+//                 let z = (Math.random() - 0.5) * 2;
+        
+//                 positions.set([x, y, z], i * 3);
+//             }
+//         // }
+
+//         // if (shape === "sphere") {
+//             const distance = 1;
+
+//             for (let i = 0; i < starsCount; i++) {
+//                 const theta = THREE.MathUtils.randFloatSpread(360);
+//                 const phi = THREE.MathUtils.randFloatSpread(360);
+
+//                 let x = distance * Math.sin(theta) * Math.cos(phi);
+//                 let y = distance * Math.sin(theta) * Math.sin(phi);
+//                 let z = distance * Math.cos(theta);
+
+//                 positions.set([x, y, z], i * 3);
+//             }
+//         // }
+
+//         return positions;
+//     }, []);
+
+//     return (
+//         <points ref={points}>
+//             <bufferGeometry>
+//                 <bufferAttribute
+//                     attach="attributes-position"
+//                     count={particlesPosition.length / 3}
+//                     array={particlesPosition}
+//                     itemSize={3}
+//                     args={[particlesPosition, starsCount, undefined]}
+//                 />
+//             </bufferGeometry>
+//             <pointsMaterial
+//                 size={0.003}
+//                 color="#5786F5"
+//                 sizeAttenuation
+//                 depthWrite={false}
+//             />
+//         </points>
+//     );
+// }
+
+// export default Stars
