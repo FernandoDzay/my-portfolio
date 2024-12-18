@@ -1,4 +1,4 @@
-import { LanguageContext } from "@/components/languageProvider"
+import { LanguageContext } from "@/components/LanguageProvider"
 import { useContext } from "react"
 
 

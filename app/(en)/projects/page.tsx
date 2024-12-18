@@ -1,4 +1,4 @@
-import Projects from "@/components/pages/Projects";
+import Projects from "@/pages/Projects";
 
 export default function Page() {
     return <Projects lang="en" />

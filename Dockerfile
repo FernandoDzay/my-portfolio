@@ -1,5 +1,5 @@
 # ------------------------ Commands for deployment
-# docker build -t my-portfolio .
+# docker build -t fernandodzay/my-portfolio .
 # docker run -p 3033:3000 -d --name my-portfolio my-portfolio
 
 # syntax=docker.io/docker/dockerfile:1

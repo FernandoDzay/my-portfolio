@@ -1,5 +1,5 @@
-import Header from "@/components/header";
-import LanguageProvider from "@/components/languageProvider";
+import Header from "@/components/Header";
+import LanguageProvider from "@/components/LanguageProvider";
 
 export default function Layout({ children }: {children: React.ReactNode}) {
 
