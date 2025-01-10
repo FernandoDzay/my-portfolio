@@ -8,6 +8,7 @@ import { useRef, useState } from "react"
 import contactAction from "./contactAction"
 import dynamic from 'next/dynamic'
 import { EarthCanvas, StarsCanvas } from "@/components/Canvas"
+import Button from "@/components/Button"
 const SweetAlert2 = dynamic(() => import('@/components/SweetAlert'))
 const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'))
 
@@ -140,9 +141,7 @@ const ContactSection:React.FC<Props> = () => {
                                 />
                             </label>
 
-                            <button disabled={loading} type='submit' className='bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary'>
-                                {loading ? "Sending..." : "Send"}
-                            </button>
+                            <Button loading={loading} type="submit">Send</Button>
                         </form>
                     </motion.div>
 
