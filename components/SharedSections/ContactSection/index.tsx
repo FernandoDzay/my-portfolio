@@ -9,6 +9,7 @@ import contactAction from "./contactAction"
 import dynamic from 'next/dynamic'
 import { EarthCanvas, StarsCanvas } from "@/components/Canvas"
 import Button from "@/components/Button"
+import useLang from "@/hooks/useLang"
 const SweetAlert2 = dynamic(() => import('@/components/SweetAlert'))
 const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'))
 
@@ -17,6 +18,7 @@ const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'))
 type Props = {}
 
 const ContactSection:React.FC<Props> = () => {
+    const isEn = useLang();
     const form_key = 'massage_sent';
     const [sweetAlertProps, setSweetAlertProps] = useState<{show: boolean, title?: string, text?: string, icon?: 'success'| 'error'}>({show: false});
     const [downloadSweetAlert, setDownloadSweetAlert] = useState(false);
@@ -52,7 +54,12 @@ const ContactSection:React.FC<Props> = () => {
         e.preventDefault();
 
         if( localStorage.getItem(form_key) !== null ) {
-            setSweetAlertProps({show: true, icon: 'success', title: 'No te preocupes', text: 'Tu mensaje ya ha sido enviado, en breve me pondré en contacto contigo'});
+            setSweetAlertProps({
+                show: true,
+                icon: 'success',
+                title: isEn ? `Don’t worry` : `No te preocupes`,
+                text: isEn ? `Your message has been sent. I will get in touch with you shortly.` : `Tu mensaje ya ha sido enviado, en breve me pondré en contacto contigo`
+            });
             setForm({
                 Nombre: '',
                 Email: '',
@@ -98,12 +105,12 @@ const ContactSection:React.FC<Props> = () => {
             <div className='relative z-0'>
                 <div className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}>
                     <motion.div variants={slideIn("left", "tween", 0.2, 1)} className='flex-[0.75] bg-black-100 p-8 rounded-2xl'>
-                        <p className={styles.sectionSubText}>Get in touch</p>
-                        <h3 className={styles.sectionHeadText}>Contact.</h3>
+                        <p className={styles.sectionSubText}>{isEn ? `Get in touch` : `Ponte en contacto`}</p>
+                        <h3 className={styles.sectionHeadText}>{isEn ? `Contact` : `Contacto`}</h3>
 
                         <form className='mt-12 flex flex-col gap-8' method="post" onSubmit={handleSubmit}>
                             <label className='flex flex-col'>
-                                <span className='text-white font-medium mb-4'>Your Name</span>
+                                <span className='text-white font-medium mb-4'>{isEn ? `Your name` : `Tu nombre`}</span>
                                 <input
                                     type='text'
                                     name='Nombre'
@@ -111,24 +118,24 @@ const ContactSection:React.FC<Props> = () => {
                                     required
                                     value={form.Nombre}
                                     onChange={handleChange}
-                                    placeholder="What's your good name?"
+                                    placeholder={isEn ? `What's your name?` : `¿Cuál es tu nombre?`}
                                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
-                                    />
+                                />
                             </label>
                             <label className='flex flex-col'>
-                                <span className='text-white font-medium mb-4'>Your email</span>
+                                <span className='text-white font-medium mb-4'>{isEn ? `Your email` : `Tu email`}</span>
                                 <input
                                     type='email'
                                     name='Email'
                                     required
                                     value={form.Email}
                                     onChange={handleChange}
-                                    placeholder="What's your web address?"
+                                    placeholder={isEn ? `What's your email?` : `¿Cuál es tu email?`}
                                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                                 />
                             </label>
                             <label className='flex flex-col'>
-                                <span className='text-white font-medium mb-4'>Your Message</span>
+                                <span className='text-white font-medium mb-4'>{isEn ? `Your Message` : `Tu mensaje`}</span>
                                 <textarea
                                     rows={5}
                                     name='Mensaje'
@@ -136,12 +143,12 @@ const ContactSection:React.FC<Props> = () => {
                                     minLength={4}
                                     value={form.Mensaje}
                                     onChange={handleChange}
-                                    placeholder='What you want to say?'
+                                    placeholder={isEn ? `What you want to say?` : `¿Qué es lo que te gustaría decir?`}
                                     className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
                                 />
                             </label>
 
-                            <Button loading={loading} type="submit">Send</Button>
+                            <Button loading={loading} type="submit">{isEn ? `Send` : `Enviar`}</Button>
                         </form>
                     </motion.div>
 

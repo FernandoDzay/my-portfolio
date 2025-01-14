@@ -6,14 +6,17 @@ import { ComputerCanvas } from '@/components/Canvas'
 import Section from '@/components/Section'
 import { fadeIn, textVariant } from "@/utils/motion"
 import { motion } from 'framer-motion'
+import { getProjectsByFilters } from './projectsJson'
+import ProjectCard from '@/components/Project'
 
 
 
 type Props = LangProps
 
-const Projects:React.FC<Props> = () => {
-    
-    
+const Projects:React.FC<Props> = ({ lang }) => {
+    const isEn = lang === 'en';
+
+
     return (
         <>
             <section className='relative w-full h-screen mx-auto'>
@@ -24,26 +27,75 @@ const Projects:React.FC<Props> = () => {
                         <div className='w-1 sm:h-80 h-40 violet-gradient' />
                     </div>
                     <div className='w-full'>
-                        <h1 className={`${styles.heroHeadText}`}>Mis <span className='text-[#915eff]'>Proyectos</span></h1>
-                        <p className={`${styles.heroSubText} mt-2 text-white-100`}>Conoce todos los proyectos <br className='sm:block hidden' />qué he creado, o en los que he<br className='sm:block hidden' />participado</p>
+                        {isEn ? (<>
+                            <h1 className={`${styles.heroHeadText}`}>My <span className='text-[#915eff]'>Projects</span></h1>
+                            <p className={`${styles.heroSubText} mt-2 text-white-100`}>Explore all the projects<br className='sm:block hidden' /> I have created or contributed to.</p>
+                        </>) : (<>
+                            <h1 className={`${styles.heroHeadText}`}>Mis <span className='text-[#915eff]'>Proyectos</span></h1>
+                            <p className={`${styles.heroSubText} mt-2 text-white-100`}>Conoce todos los proyectos <br className='sm:block hidden' />qué he creado, o en los que he<br className='sm:block hidden' />participado</p>
+                        </>)}
                     </div>
                 </div>
                 {process.env.NEXT_PUBLIC_SHOW_CANVAS === 'true' && (
                     <ComputerCanvas />
                 )}
-                <VerticalSwitch href='#about' />
+                <VerticalSwitch href='#main' />
             </section>
 
-            <Section id="asda">
-                <motion.div variants={textVariant(0)}>  
-                    <p className={styles.sectionSubText}>List of my</p>
-                    <h2 className={styles.sectionHeadText}>Mechatronic projects</h2>
+            <Section id="main">
+                <motion.div variants={textVariant(0)}>
+                    <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
+                    <h2 className={styles.sectionHeadText}>{isEn ? `Recent Projects` : `Proyectos recientes`}</h2>
                 </motion.div>
 
                 <div className="w-full flex">
                     <motion.p variants={fadeIn("", "", 0.1, 1)} className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit a officia voluptatibus minima sint, placeat ratione sapiente laudantium nostrum officiis, debitis aut nesciunt repudiandae dolore voluptas ducimus sequi ut soluta?
+                        {isEn ? `In this section, I showcase some of my most recent projects, where I’ve applied my skills as a full-stack developer to create dynamic and efficient web solutions.` : `En esta sección, te presento algunos de mis proyectos más recientes, en los que he aplicado mis habilidades como desarrollador full stack para crear soluciones web dinámicas y eficientes.`}
                     </motion.p>
+                </div>
+
+                <div className="mt-20 flex flex-wrap xg:grid xg:grid-cols-3 grid-cols-3 gap-7">
+                    {getProjectsByFilters(['importants']).map((project, index) => (
+                        <ProjectCard key={index} index={index} {...project} />
+                    ))}
+                </div>
+            </Section>
+
+            <Section id="transportation">
+                <motion.div variants={textVariant(0)}>
+                    <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
+                    <h2 className={styles.sectionHeadText}>{isEn ? `Transportation projects` : `Proyectos de transportación`}</h2>
+                </motion.div>
+
+                <div className="w-full flex">
+                    <motion.p variants={fadeIn("", "", 0.1, 1)} className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+                        {isEn ? `Throughout my career, I have contributed to numerous projects in the transportation industry in Cancún. In this section, I showcase the ones I’ve worked on.` : `A lo largo de mi carrera, he contribuido a numerosos proyectos en la industria de transportación en Cancún. En esta sección te muestro cuáles fueron.`}
+                    </motion.p>
+                </div>
+
+                <div className="mt-20 flex flex-wrap xg:grid xg:grid-cols-3 grid-cols-3 gap-7">
+                    {getProjectsByFilters(['transportation']).map((project, index) => (
+                        <ProjectCard key={index} index={index} {...project} />
+                    ))}
+                </div>
+            </Section>
+
+            <Section id="university">
+                <motion.div variants={textVariant(0)}>
+                    <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
+                    <h2 className={styles.sectionHeadText}>{isEn ? `University projects` : `Proyectos universitarios`}</h2>
+                </motion.div>
+
+                <div className="w-full flex">
+                    <motion.p variants={fadeIn("", "", 0.1, 1)} className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]">
+                        {isEn ? `Although I currently work in programming, I hold a degree in Mechatronics Engineering. During my university years, I worked on some interesting projects. Feel free to explore them below.` : `Aunque ahora me dedico a la programación, yo soy Ingeniero en mecatrónica por título. Durante mi época universitaria, hice algunos proyectos interesantes. Si gustas conocerlos, aquí te muestro cuáles son`}
+                    </motion.p>
+                </div>
+
+                <div className="mt-20 flex flex-wrap xg:grid xg:grid-cols-3 grid-cols-3 gap-7">
+                    {getProjectsByFilters(['university']).map((project, index) => (
+                        <ProjectCard key={index} index={index} {...project} />
+                    ))}
                 </div>
             </Section>
         </>

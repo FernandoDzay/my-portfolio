@@ -100,6 +100,12 @@ const technologies: Technology[] = [
         "image": ""
     },
     {
+        "name": "Docker",
+        "hashtag": "docker",
+        "hashtagColor": "#2496ed",
+        "image": ""
+    },    
+    {
         "name": "Tailwind",
         "hashtag": "tailwind",
         "hashtagColor": "#38b2ac",
@@ -150,7 +156,7 @@ const technologies: Technology[] = [
     {
         "name": "Express.js",
         "hashtag": "express",
-        "hashtagColor": "#000000",
+        "hashtagColor": "#9e8a8a",
         "image": ""
     },
     {
@@ -160,8 +166,8 @@ const technologies: Technology[] = [
         "image": ""
     },
     {
-        "name": "C",
-        "hashtag": "c",
+        "name": "C++",
+        "hashtag": "c++",
         "hashtagColor": "#00599c",
         "image": ""
     },

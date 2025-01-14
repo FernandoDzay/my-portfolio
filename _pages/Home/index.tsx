@@ -8,14 +8,14 @@ import ContactSection from "@/components/SharedSections/ContactSection"
 
 type Props = LangProps
 
-const Home:React.FC<Props> = () => {
+const Home:React.FC<Props> = ({ lang }) => {
     
     
     return (<>
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
+        <HeroSection lang={lang} />
+        <AboutSection lang={lang} />
+        <ExperienceSection lang={lang} />
+        <ProjectsSection lang={lang} />
         <ContactSection />
     </>)
 }

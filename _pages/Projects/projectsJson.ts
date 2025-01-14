@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image"
 
 // ------- images
+import abaccor from './project-images/abaccor.png'
 import ahs from './project-images/ahs.png'
 import aiportcancun from './project-images/airportcancun.png'
 import faceRecognitionApp from './project-images/face-recognition-app.jpeg'
@@ -12,6 +13,11 @@ import puertoVallarta from './project-images/puertovallarta.png'
 import señales from './project-images/señales.jpeg'
 import todoList from './project-images/todolist.jpeg'
 import val from './project-images/val.png'
+import caribbeanTransfers from './project-images/caribbean-transfers.png'
+import abaccor_site from './project-images/abaccor_site.png'
+import abaccor_panel from './project-images/abaccor_panel.png'
+import etransfers from './project-images/etransfers.png'
+import portfolio from './project-images/portfolio.png'
 import { getTechnologiesByHashtags, type Technology } from "./technologiesJson"
 /* ------------ */
 
@@ -35,15 +41,28 @@ export type Project = {
 }
 
 export const getProjectsByFilters = (filters: Filter[]) => {
-    return projectsJson.filter(project => project.filters.find(filter => filters.includes(filter)) !== undefined);
+    return projectsJson
+    .filter(project =>
+        filters.every(filter => project.filters.includes(filter))
+    )
+    .sort((a, b) => {
+        const aIndex = Math.min(...a.filters.map(f => filters.indexOf(f)).filter(index => index !== -1));
+        const bIndex = Math.min(...b.filters.map(f => filters.indexOf(f)).filter(index => index !== -1));
+        return aIndex - bIndex;
+    });
+}
+
+export const getProjectBySlug = (slug: string) => {
+    return projectsJson.find(project => project.slug === slug);
 }
 
 const projectsJson: Project[] = [
     {
         slug: 'abaccor-app',
-        filters: ['programming', 'recent', 'importants', 'show-in-home-page'],
-        image: ahs, // pending,
-        technologies: getTechnologiesByHashtags(['react', 'redux', 'laravel', 'php', 'nestjs', 'nextjs']),
+        filters: ['recent', 'importants', 'show-in-home-page'],
+        image: abaccor,
+        technologies: getTechnologiesByHashtags(['react', 'redux', 'react_query', 'laravel', 'php', 'nestjs', 'nextjs', 'docker']),
+        seeLiveLink: 'https://www.abaccor.com',
         en: {
             name: 'Abaccor',
             briefDescription: 'Comprehensive billing and accounting solution for SMEs in Mexico.',
@@ -67,9 +86,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'caribbean-transfers',
-        filters: ['recent', 'programming', 'transportation', 'importants', 'show-in-home-page'],
-        image: ahs, // pending
-        technologies: [],
+        filters: ['recent', 'importants', 'show-in-home-page'],
+        image: caribbeanTransfers,
+        technologies: getTechnologiesByHashtags(['nextjs', 'express', 'typescript', 'mysql', 'scss']),
         seeLiveLink: 'https://caribbean-transfers.com',
         en: {
             name: 'Caribbean Transfers',
@@ -88,9 +107,10 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'abaccor-site',
-        filters: ['programming', 'recent', 'importants'],
-        image: ahs, // pending
-        technologies: [],
+        filters: ['recent', 'importants'],
+        image: abaccor_site,
+        technologies: getTechnologiesByHashtags(['nextjs', 'typescript', 'scss']),
+        seeLiveLink: 'https://www.abaccor.com',
         en: {
             name: 'Abaccor Site',
             briefDescription: 'Corporate website for Abaccor, developed with Next.js for high performance and SEO optimization.',
@@ -112,9 +132,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'abaccor-admin-panel',
-        filters: ['programming', 'recent', 'importants', 'show-in-home-page'],
-        image: ahs, // pending
-        technologies: [],
+        filters: ['recent', 'importants', 'show-in-home-page'],
+        image: abaccor_panel,
+        technologies: getTechnologiesByHashtags(['react', 'redux', 'typescript', 'rtk_query', 'laravel', 'ant_design']),
         en: {
             name: 'Abaccor Admin Panel',
             briefDescription: 'Abaccor administrative panel developed for comprehensive management of operations and users.',
@@ -134,9 +154,11 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'my-portfolio',
-        filters: ['programming', 'transportation'],
-        image: ahs,
-        technologies: [],
+        filters: ['importants', 'recent'],
+        image: portfolio,
+        technologies: getTechnologiesByHashtags(['nextjs', 'typescript', 'docker', 'tailwind', 'framer_motion', 'threejs']),
+        seeLiveLink: 'https://www.luisdzay.com',
+        sourceCodeLink: 'https://github.com/FernandoDzay/my-portfolio',
         en: {
             name: 'This Portfolio',
             briefDescription: 'My personal portfolio, where I showcase my projects, experience, and skills as a Full Stack developer.',
@@ -160,9 +182,9 @@ const projectsJson: Project[] = [
     // ----------- transportation
     {
         slug: 'etransfers',
-        filters: ['programming', 'transportation'],
-        image: ahs, //pending
-        technologies: [],
+        filters: ['transportation'],
+        image: etransfers,
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         seeLiveLink: 'https://etransfers.com',
         en: {
             name: 'Etransfers',
@@ -180,9 +202,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'airporthotelshuttle',
-        filters: ['programming', 'transportation'],
+        filters: ['transportation'],
         image: ahs,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         seeLiveLink: 'https://www.airporthotelshuttle.com',
         en: {
             name: 'Airport Hotel Shuttle',
@@ -200,9 +222,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'valmovilidad',
-        filters: ['programming', 'transportation'],
+        filters: ['transportation'],
         image: val,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         seeLiveLink: 'https://www.valmovilidad.com',
         en: {
             name: 'Valmovilidad',
@@ -220,9 +242,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'etransfers-point-of-sale',
-        filters: ['programming', 'transportation'],
+        filters: ['transportation'],
         image: pos,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         en: {
             name: 'Etransfers POS',
             briefDescription: 'Web application developed as a point-of-sale solution for transportation services in Cancun.',
@@ -239,9 +261,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'puertovallartacarrental',
-        filters: ['programming', 'transportation'],
+        filters: ['transportation'],
         image: puertoVallarta,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         seeLiveLink: 'https://www.puertovallartacarrental.net',
         en: {
             name: 'City Car Rental Puerto Vallarta',
@@ -260,9 +282,9 @@ const projectsJson: Project[] = [
     },
     {
         slug: 'airportcancun',
-        filters: ['programming', 'transportation'],
+        filters: ['transportation'],
         image: aiportcancun,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['yiiframework', 'php', 'html', 'jquery', 'javascript', 'scss']),
         seeLiveLink: 'https://www.airportcancun.com',
         en: {
             name: 'airportcancun.com',
@@ -285,7 +307,9 @@ const projectsJson: Project[] = [
         slug: 'office-lunch-platform',
         filters: ['programming'],
         image: officeLunch,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['react', 'redux', 'express', 'scss', 'mysql']),
+        seeLiveLink: 'https://office-lunch-platform.luisdzay.com',
+        sourceCodeLink: 'https://github.com/FernandoDzay/office-lunch-react',
         en: {
             name: 'Office Lunch Platform',
             briefDescription: 'Web application managing lunch orders for office employees.',
@@ -305,8 +329,9 @@ const projectsJson: Project[] = [
         slug: 'face-recognition-app',
         filters: ['programming', 'university'],
         image: faceRecognitionApp,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['react', 'redux', 'express']),
         seeLiveLink: 'https://fernandodzay.github.io/smart-brain',
+        sourceCodeLink: 'https://github.com/FernandoDzay/smart-brain',
         en: {
             name: 'Face Recognition App',
             briefDescription: 'Web application for facial recognition.',
@@ -326,7 +351,8 @@ const projectsJson: Project[] = [
         slug: 'to-do-list',
         filters: ['programming', 'university'],
         image: todoList,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['android_studio']),
+        sourceCodeLink: 'https://github.com/FernandoDzay/To-Do-List',
         en: {
             name: 'To-Do List',
             briefDescription: 'Mobile application for creating a to-do list developed in Android Studio.',
@@ -345,7 +371,8 @@ const projectsJson: Project[] = [
         slug: 'fpga-edge-detection',
         filters: ['programming', 'university'],
         image: lena,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['hdl', 'fpga', 'matlab']),
+        sourceCodeLink: 'https://github.com/FernandoDzay/Detector-de-bordes-FPGA',
         en: {
             name: 'FPGA Edge Detection',
             briefDescription: 'Edge detection project using FPGA through digital signal processing, programmed in HDL Verilog, MATLAB, and Raspberry Pi.',
@@ -371,7 +398,8 @@ const projectsJson: Project[] = [
         slug: 'matlab-signal-processing',
         filters: ['mechatronics', 'university'],
         image: señales,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['matlab']),
+        sourceCodeLink: 'https://github.com/FernandoDzay/Matlab-GUI-Signal-Operations',
         en: {
             name: 'MATLAB Signal Processing',
             briefDescription: 'MATLAB GUI for graphing and processing signals.',
@@ -389,7 +417,8 @@ const projectsJson: Project[] = [
         slug: 'washing-machine-automation',
         filters: ['mechatronics'],
         image: lavadora,
-        technologies: [],
+        technologies: getTechnologiesByHashtags(['arduino', 'c++']),
+        sourceCodeLink: 'https://github.com/FernandoDzay/Automatizacion-Lavadora',
         en: {
             name: 'Washing Machine Automation',
             briefDescription: 'Automation of water filling in a household washing machine.',
@@ -403,23 +432,6 @@ const projectsJson: Project[] = [
             fullDescription: ['Automatización del llenado de agua de lavadora casera, programado en C, usando Arduino como controlador digital.'],
         }
     },
-
-
-    /* {
-        slug: '________',
-        filters: ['programming', 'transportation'],
-        image: ______,
-        en: {
-            name: '',
-            briefDescription: '',
-            fullDescription: [''],
-        },
-        es: {
-            name: '',
-            briefDescription: '',
-            fullDescription: [''],
-        }
-    }, */
 ]
 
 export default projectsJson;

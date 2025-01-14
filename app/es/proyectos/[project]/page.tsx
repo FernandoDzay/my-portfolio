@@ -7,5 +7,5 @@ export default async function Page({params}: {params: Promise<{project: string}>
     const project = getProjectBySlug(slug);
     
     if(!project) notFound();
-    return <Project lang="en" project={project} />
+    return <Project lang="es" project={project} />
 }

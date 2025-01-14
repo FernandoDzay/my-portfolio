@@ -202,3 +202,50 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+
+
+/* .show-tooltip:hover .tooltip {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -10px;
+  
+  background-color: white;
+  z-index: 50;
+
+}
+ */
+
+
+ .tooltip-container {
+  display: none;
+}
+ .show-tooltip:hover .tooltip-container {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -50px;
+}
+.tooltip {
+  display: block;
+  position: relative;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  z-index: 50;
+  color: white;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  transform: rotate(45deg);
+  background-color: #4CAF50;
+  position: absolute;
+  bottom: -4px;
+  left: 10px;
+}

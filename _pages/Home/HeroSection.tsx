@@ -3,9 +3,10 @@ import VerticalSwitch from '@/components/VerticalSwitch'
 import { ComputerCanvas } from '@/components/Canvas'
 
 
-type Props = {}
+type Props = LangProps
 
-const HeroSection:React.FC<Props> = () => {
+const HeroSection:React.FC<Props> = ({ lang }) => {
+    const isEn = lang === 'en';
     
     
     return (
@@ -17,8 +18,13 @@ const HeroSection:React.FC<Props> = () => {
                     <div className='w-1 sm:h-80 h-40 violet-gradient' />
                 </div>
                 <div className='w-full'>
-                    <h1 className={`${styles.heroHeadText}`}>Hi, i'm <span className='text-[#915eff]'>Luis Dzay</span></h1>
-                    <p className={`${styles.heroSubText} mt-2 text-white-100`}>I develop 3D visuals, user <br className='sm:block hidden' />interfaces and web applications</p>
+                    {isEn ? (<>
+                        <h1 className={`${styles.heroHeadText}`}>Hi, i'm <span className='text-[#915eff]'>Luis Dzay</span></h1>
+                        <p className={`${styles.heroSubText} mt-2 text-white-100`}>A Software Engineer, with experience<br className='sm:block hidden' /> in creating modern web solutions.</p>
+                    </>) : (<>
+                        <h1 className={`${styles.heroHeadText}`}>Hola, soy <span className='text-[#915eff]'>Luis Dzay</span></h1>
+                        <p className={`${styles.heroSubText} mt-2 text-white-100`}>Un Ingeniero de software con experiencia<br className='sm:block hidden' /> en la creación de soluciones web modernas</p>
+                    </>)}
                 </div>
             </div>
             {process.env.NEXT_PUBLIC_SHOW_CANVAS === 'true' && (
