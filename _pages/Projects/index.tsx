@@ -80,6 +80,18 @@ const Projects:React.FC<Props> = ({ lang }) => {
                 </div>
             </Section>
 
+            <Section id="others-section">
+                <motion.div variants={textVariant(0)}>
+                    <h2 className={styles.sectionHeadText}>{isEn ? `Other projects` : `Otros proyectos`}</h2>
+                </motion.div>
+
+                <div className="mt-20 flex flex-wrap xg:grid xg:grid-cols-3 grid-cols-3 gap-7">
+                    {getProjectsByFilters(['others-section']).map((project, index) => (
+                        <ProjectCard key={index} index={index} {...project} />
+                    ))}
+                </div>
+            </Section>
+
             <Section id="university">
                 <motion.div variants={textVariant(0)}>
                     <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>

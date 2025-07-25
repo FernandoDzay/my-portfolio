@@ -7,7 +7,7 @@ import aiportcancun from './project-images/airportcancun.png'
 import faceRecognitionApp from './project-images/face-recognition-app.jpeg'
 import lavadora from './project-images/lavadora.jpeg'
 import lena from './project-images/lena.jpeg'
-import officeLunch from './project-images/office_lunch.jpg'
+import officeLunch from './project-images/office_lunch.png'
 import pos from './project-images/pos.png'
 import puertoVallarta from './project-images/puertovallarta.png'
 import señales from './project-images/señales.jpeg'
@@ -27,7 +27,15 @@ type TranslationItems = {
     fullDescription: string[]
 }
 
-type Filter = 'recent'|'importants'|'programming'|'transportation'|'mechatronics'|'university'|'show-in-home-page';
+type Filter = 
+    'recent'
+    |'importants'
+    |'programming'
+    |'others-section'
+    |'transportation'
+    |'mechatronics'
+    |'university'
+    |'show-in-home-page';
 
 export type Project = {
     slug: string
@@ -305,7 +313,7 @@ const projectsJson: Project[] = [
 
     {
         slug: 'office-lunch-platform',
-        filters: ['programming'],
+        filters: ['programming', 'others-section'],
         image: officeLunch,
         technologies: getTechnologiesByHashtags(['react', 'redux', 'express', 'scss', 'mysql']),
         seeLiveLink: 'https://office-lunch-platform.luisdzay.com',
@@ -314,15 +322,25 @@ const projectsJson: Project[] = [
             name: 'Office Lunch Platform',
             briefDescription: 'Web application managing lunch orders for office employees.',
             fullDescription: [
-                'This web application manages a lunch ordering system for office employees, allowing the administration of menus, prices, orders, and payments. It includes a complete CRUD management system for administrators, employees, meals, orders, and payments.',
+                'This web application facilitates lunch ordering for office employees, offering full CRUD management for administrators, employees, meals, orders, and payments. It enables efficient handling of menus, prices, and order processing.',
                 'I developed this application from scratch as a personal project, motivated by the desire to improve my programming skills while providing a real solution to the company’s problems.',
-                'Motivation: The office offered lunch to employees, but the management of menus, prices, and payments was manual, using an Excel sheet. This led to a tedious and error-prone process. The solution automates this process, improving efficiency and reducing mistakes.'
+                'Motivation:',
+                'The office offered lunch to employees, but the management of menus, prices, and payments was manual, using an Excel sheet. This led to a tedious and error-prone process. The solution automates this process, improving efficiency and reducing mistakes.',
+                'You can try it in my testing environment! Credentials:',
+                'luis@gmail.com — 1234',
             ],
         },
         es: {
             name: 'Office Lunch Platform',
             briefDescription: 'Aplicación web que gestiona un sistema de almuerzos para empleados de una oficina.',
-            fullDescription: ['Esta aplicación web gestiona un sistema de almuerzos para empleados en una oficina, permitiendo la administración de menús, precios, órdenes y pagos. Incluye un sistema completo de gestión (CRUD) para administradores, empleados, comidas, órdenes y pagos.', 'Desarrollé la aplicación desde cero como un proyecto personal, motivado por el deseo de mejorar mis habilidades de programación, al mismo tiempo que proporcionaba una solución real a los problemas de la empresa.', 'Motivación: La oficina ofrecía almuerzos a sus empleados, pero la gestión de menús, precios y pagos era manual, utilizando una hoja de Excel. Esto resultaba en un proceso tedioso y propenso a errores. La solución automatiza todo este proceso, mejorando la eficiencia y reduciendo el riesgo de equivocaciones.'],
+            fullDescription: [
+                'Esta aplicación web facilita la gestión de pedidos de comida para empleados de oficina, ofreciendo un sistema completo de administración (CRUD) para administradores, empleados, platillos, pedidos y pagos. Permite manejar eficientemente los menús, precios y el procesamiento de pedidos.',
+                'Desarrollé la aplicación desde cero como un proyecto personal, motivado por el deseo de mejorar mis habilidades de programación, al mismo tiempo que proporcionaba una solución real a los problemas de la empresa.',
+                'Motivación:',
+                'La oficina ofrecía almuerzos a sus empleados, pero la gestión de menús, precios y pagos era manual, utilizando una hoja de Excel. Esto resultaba en un proceso tedioso y propenso a errores. La solución automatiza todo este proceso, mejorando la eficiencia y reduciendo el riesgo de equivocaciones.',
+                '¡Accede a mi entorno de pruebas! Credenciales:',
+                'luis@gmail.com — 1234',
+            ],
         }
     },
     {
