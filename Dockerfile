@@ -1,6 +1,9 @@
 # ------------------------ Commands for deployment
 # docker build -t fernandodzay/my-portfolio .
-# docker run -p 3033:3000 -d --name my-portfolio my-portfolio
+# docker image fernandodzay/my-portfolio push
+# docker container stop my-portfolio
+# docker container rm my-portfolio
+# docker run -p 3033:3000 -d --name my-portfolio fernandodzay/my-portfolio
 
 # syntax=docker.io/docker/dockerfile:1
 
