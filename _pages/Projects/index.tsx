@@ -42,7 +42,7 @@ const Projects:React.FC<Props> = ({ lang }) => {
                 <VerticalSwitch href='#main' />
             </section>
 
-            <Section id="main">
+            <Section id="main" withoutEffect>
                 <motion.div variants={textVariant(0)}>
                     <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
                     <h2 className={styles.sectionHeadText}>{isEn ? `Recent Projects` : `Proyectos recientes`}</h2>
@@ -61,7 +61,7 @@ const Projects:React.FC<Props> = ({ lang }) => {
                 </div>
             </Section>
 
-            <Section id="transportation">
+            <Section id="transportation" withoutEffect>
                 <motion.div variants={textVariant(0)}>
                     <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
                     <h2 className={styles.sectionHeadText}>{isEn ? `Transportation projects` : `Proyectos de transportación`}</h2>
@@ -80,7 +80,7 @@ const Projects:React.FC<Props> = ({ lang }) => {
                 </div>
             </Section>
 
-            <Section id="others-section">
+            <Section id="others-section" withoutEffect>
                 <motion.div variants={textVariant(0)}>
                     <h2 className={styles.sectionHeadText}>{isEn ? `Other projects` : `Otros proyectos`}</h2>
                 </motion.div>
@@ -92,7 +92,7 @@ const Projects:React.FC<Props> = ({ lang }) => {
                 </div>
             </Section>
 
-            <Section id="university">
+            <Section id="university" withoutEffect>
                 <motion.div variants={textVariant(0)}>
                     <p className={styles.sectionSubText}>{isEn ? `List of my` : `Lista de mis`}</p>
                     <h2 className={styles.sectionHeadText}>{isEn ? `University projects` : `Proyectos universitarios`}</h2>

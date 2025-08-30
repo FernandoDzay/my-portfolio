@@ -27,6 +27,6 @@ jobs:
           sudo git pull
           docker container stop my-portfolio
           docker container rm my-portfolio
-          docker image pull fernandodzay/my-portfolio
+          docker image rm fernandodzay/my-portfolio
+          docker build -t fernandodzay/my-portfolio .
           docker run -p 3033:3000 -d --name my-portfolio fernandodzay/my-portfolio
-          docker image prune -a -f
