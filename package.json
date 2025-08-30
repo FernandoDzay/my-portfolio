@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "docker build -t fernandodzay/my-portfolio . && docker image fernandodzay/my-portfolio push && git push"
   },
   "dependencies": {
     "@notionhq/client": "^2.2.15",
